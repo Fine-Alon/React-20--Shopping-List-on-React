@@ -1,13 +1,19 @@
-import {Card} from "./Card.jsx";
+import Card from "./Card.jsx";
+import Button from "./Button.jsx";
 
-export const CardList = ({list}) => {
+const CardList = ({list}) => {
 
-    return <div style={{background: 'white'}}>
+    return <div className='container'>
         <h1 style={{color: 'black'}}>Shopping list</h1>
 
-        {list.map(item => (
-            <Card done={item.done} key={item.id} title={item.title}/>
-        ))}
+        <ul className='list'>
+            {list.map(item => (
+                <Card done={item.done} key={item.id} title={item.title}/>
+            ))}
+        </ul>
 
+        <Button />
     </div>
 }
+
+export default CardList;
