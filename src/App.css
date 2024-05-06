@@ -15,7 +15,6 @@
     display: flex;
     background-color: #e7e6e6;
     border-radius: 15px;
-    padding:10px;
     margin-bottom: 10px;
 }
 
@@ -34,4 +33,23 @@
     background: white;
     padding: 50px;
     border-radius: 15px;
+}
+
+.card-clicked{
+    filter: brightness(0.9); /* Затемнение элемента */
+}
+.btn_product{
+    border: none; /* Убираем границу кнопки */
+    background-color: transparent; /* Убираем фоновый цвет кнопки */
+    font: inherit; /* Наследуем шрифт от родительского элемента */
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    border-radius: 15px;
+    padding:10px;
+}
+
+.btn_product:focus{
+    outline: none;
 }

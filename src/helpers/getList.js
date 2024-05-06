@@ -2,7 +2,6 @@ const getList = () => {
     let list = []
 
     if (localStorage.getItem('productList')) {
-        console.log('Data is found:', JSON.parse(localStorage.getItem('productList')));
         JSON.parse(localStorage.getItem('productList')).map(product => {
             list.push(product)
         })

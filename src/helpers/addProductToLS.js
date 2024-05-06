@@ -8,6 +8,6 @@ const addProductToLS = (inputValue) => {
 
     localStorage.setItem('productList', JSON.stringify(newList))
 
-    return newList
+    return {newList, product}
 }
 export default addProductToLS

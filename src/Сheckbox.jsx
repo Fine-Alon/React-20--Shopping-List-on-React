@@ -1,20 +1,15 @@
-import React, {useState} from 'react';
+import React, {useRef, useState} from 'react';
 
-function Checkbox() {
-    const [isChecked, setIsChecked] = useState(false);
-
+function Checkbox({checked, onChange}) {
     const handleCheckboxChange = () => {
-        setIsChecked(!isChecked); // Инвертируем текущее состояние чекбокса
+        onChange(); // Передаем обратное значение checked обратно в родительский компонент
     };
 
-    return (
-        <div>
-            <input
+    return (<input
                 type="checkbox"
-                checked={isChecked}
+                checked={checked}
                 onChange={handleCheckboxChange}
             />
-        </div>
     );
 }
 
