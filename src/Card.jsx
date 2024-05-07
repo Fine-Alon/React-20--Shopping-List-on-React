@@ -2,18 +2,24 @@ import Checkbox from "./Сheckbox.jsx";
 import {useEffect, useRef, useState} from "react";
 import AddItemForm from "./AddItemForm.jsx";
 
-const Card = ({title, id, done, changeItemInList}) => {
+const Card = ({title, id, done, changeItemInList, deleteItemFromList}) => {
     const inputRef = useRef()
     const [productName, setProductName] = useState(title)
     const [isRedactTitleOpen, setIsRedactTitleOpen] = useState(false)
     const [isClicked, setIsClicked] = useState(false)
+
     const handleClickBtn = () => {
         setIsClicked(!isClicked)
     }
     const handleDoubleClickBtn = () => {
         setIsRedactTitleOpen(!isRedactTitleOpen)
-        // setProductName()
-        // changeItemInList(renewList)
+    }
+
+    const handleBlurInput = (e) => {
+        setIsRedactTitleOpen(false)
+        e.target.value.trim() === ''
+            ? deleteItemFromList(id)
+            : null
     }
 
     useEffect(() => {
@@ -24,6 +30,7 @@ const Card = ({title, id, done, changeItemInList}) => {
 
     const handleInput = (e) => {
         setProductName(e.target.value)
+        // changeItemInList(e.target.value) // ?????????????
     }
 
     return (
@@ -36,9 +43,7 @@ const Card = ({title, id, done, changeItemInList}) => {
                 {isRedactTitleOpen
                     ? <input ref={inputRef}
                              type="text"
-                             onBlur={() => {
-                                 setIsRedactTitleOpen(false)
-                             }}
+                             onBlur={handleBlurInput}
                              value={productName}
                              onInput={handleInput}/>
 

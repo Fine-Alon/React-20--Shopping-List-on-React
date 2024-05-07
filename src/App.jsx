@@ -13,10 +13,17 @@ function App() {
         setList(newList);
     };
 
+    const handleDeleteItemFromList = (id) => {
+        setList(
+            list.filter(item => item.id !== id)
+        );
+        console.log(id)
+    }
+
     return <div className='container'>
         <h1 style={{color: 'black'}}>Shopping list</h1>
 
-        <CardList list={list} changeItemInList={addItemToList}/>
+        <CardList list={list} deleteItemFromList={handleDeleteItemFromList} changeItemInList={addItemToList}/>
         <AddItemForm addItemToList={addItemToList}/>
     </div>
 }
