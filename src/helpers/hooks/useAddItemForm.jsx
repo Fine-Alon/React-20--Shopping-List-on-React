@@ -3,6 +3,7 @@ import addProductToLS from "../addProductToLS.js";
 
 function useAddItemForm(addItemToList) {
     const [inputValue, setInputValue] = useState('')
+    const [isInputVisible, setIsInputVisible] = useState(false)
 
     const onInputChange = (e) => {
         setInputValue(e.target.value)
@@ -10,16 +11,22 @@ function useAddItemForm(addItemToList) {
 
     const submitBtn = (e) => {
         e.preventDefault()
-        if (!inputValue.trim()) return;
+        if (!isInputVisible) {
+            setIsInputVisible(true);
+            return;
+        }
+        if (!inputValue.trim()) {
+            setIsInputVisible(false)
+            return
+        }
 
-        const newList = addProductToLS(null, inputValue)
-        addItemToList(inputValue); // add item to list
-
+        addProductToLS(null, inputValue)
+        addItemToList(inputValue); // add item to list DOM
         setInputValue("");
-        console.log('was submit')
+        setIsInputVisible(false)
     }
 
-    return [inputValue, onInputChange, submitBtn]
+    return [inputValue, isInputVisible, onInputChange, submitBtn]
 }
 
 export default useAddItemForm
