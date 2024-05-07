@@ -16,7 +16,7 @@ function App() {
     return <div className='container'>
         <h1 style={{color: 'black'}}>Shopping list</h1>
 
-        <CardList list={list}/>
+        <CardList list={list} changeItemInList={addItemToList}/>
         <AddItemForm addItemToList={addItemToList}/>
     </div>
 }
