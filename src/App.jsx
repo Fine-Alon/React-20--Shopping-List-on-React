@@ -3,28 +3,22 @@ import CardList from "./CardList.jsx";
 import getList from "./helpers/getList.js";
 import AddItemForm from "./AddItemForm.jsx";
 import {useState} from "react";
-
-// let list = getList()
+import addProductToLS from "./helpers/addProductToLS.js";
 
 function App() {
     const [list, setList] = useState(getList())
 
-    const addItemToList = (newList) => {
+    const handleFromList = (id = null, value = null) => {
+        const newList = addProductToLS(id, value)
+        console.log(newList)
         setList(newList);
-    };
-
-    const handleDeleteItemFromList = (id) => {
-        setList(
-            list.filter(item => item.id !== id)
-        );
-        console.log(id)
     }
 
     return <div className='container'>
         <h1 style={{color: 'black'}}>Shopping list</h1>
 
-        <CardList list={list} deleteItemFromList={handleDeleteItemFromList} changeItemInList={addItemToList}/>
-        <AddItemForm addItemToList={addItemToList}/>
+        <CardList list={list} changeFromList={handleFromList}/>
+        <AddItemForm addItemToList={handleFromList}/>
     </div>
 }
 

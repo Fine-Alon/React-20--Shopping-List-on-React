@@ -1,10 +1,10 @@
 import Card from "./Card.jsx";
 
-const CardList = ({list, changeItemInList, deleteItemFromList}) => {
+const CardList = ({list,changeFromList}) => {
     return <ul className='list'>
         {list.map(item => (
-            <Card deleteItemFromList={deleteItemFromList} done={item.done}
-                  key={item.id} id={item.id} title={item.title} changeItemInList={changeItemInList}/>
+            <Card changeFromList={changeFromList} done={item.done}
+                  key={item.id} id={item.id} title={item.title}/>
         ))}
     </ul>
 }

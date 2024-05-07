@@ -1,8 +1,8 @@
 import Checkbox from "./Сheckbox.jsx";
 import {useEffect, useRef, useState} from "react";
-import AddItemForm from "./AddItemForm.jsx";
+import addProductToLS from "./helpers/addProductToLS.js";
 
-const Card = ({title, id, done, changeItemInList, deleteItemFromList}) => {
+const Card = ({title, id, done, changeFromList}) => {
     const inputRef = useRef()
     const [productName, setProductName] = useState(title)
     const [isRedactTitleOpen, setIsRedactTitleOpen] = useState(false)
@@ -17,9 +17,9 @@ const Card = ({title, id, done, changeItemInList, deleteItemFromList}) => {
 
     const handleBlurInput = (e) => {
         setIsRedactTitleOpen(false)
-        e.target.value.trim() === ''
-            ? deleteItemFromList(id)
-            : null
+        e.target.value.trim() !== ''
+            ? addProductToLS(id, e.target.value.trim())
+            : changeFromList(id, null)
     }
 
     useEffect(() => {
@@ -30,7 +30,6 @@ const Card = ({title, id, done, changeItemInList, deleteItemFromList}) => {
 
     const handleInput = (e) => {
         setProductName(e.target.value)
-        // changeItemInList(e.target.value) // ?????????????
     }
 
     return (

@@ -12,8 +12,8 @@ function useAddItemForm(addItemToList) {
         e.preventDefault()
         if (!inputValue.trim()) return;
 
-        const {newList} = addProductToLS(inputValue)
-        addItemToList(newList); // add item to list
+        const newList = addProductToLS(null, inputValue)
+        addItemToList(inputValue); // add item to list
 
         setInputValue("");
         console.log('was submit')
