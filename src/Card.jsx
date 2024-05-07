@@ -2,51 +2,52 @@ import Checkbox from "./Сheckbox.jsx";
 import {useEffect, useRef, useState} from "react";
 import addProductToLS from "./helpers/addProductToLS.js";
 
-const Card = ({title, id, done, changeFromList}) => {
+const Card = ({title, id, done, handleFromList}) => {
     const inputRef = useRef()
     const [productName, setProductName] = useState(title)
-    const [isRedactTitleOpen, setIsRedactTitleOpen] = useState(false)
-    const [isClicked, setIsClicked] = useState(false)
+    const [isEditMode, setIsEditMode] = useState(false)
+    const [isDone, setIsDone] = useState(done)
 
     const handleClickBtn = () => {
-        setIsClicked(!isClicked)
+        setIsDone(!isDone)
+        handleFromList(id, productName.trim(), isDone)
     }
     const handleDoubleClickBtn = () => {
-        setIsRedactTitleOpen(!isRedactTitleOpen)
+        setIsEditMode(!isEditMode)
     }
 
     const handleBlurInput = (e) => {
-        setIsRedactTitleOpen(false)
+        setIsEditMode(false)
         e.target.value.trim() !== ''
-            ? addProductToLS(id, e.target.value.trim())
-            : changeFromList(id, null)
+            ? addProductToLS(id, e.target.value.trim(), isDone)
+            : handleFromList(id)
     }
 
     useEffect(() => {
-        if (isRedactTitleOpen && inputRef.current) {
+        if (isEditMode && inputRef.current) {
             inputRef.current.focus()
         }
-    }, [isRedactTitleOpen]);
+    }, [isEditMode]);
 
     const handleInput = (e) => {
         setProductName(e.target.value)
     }
 
     return (
-        <li key={id} className={isClicked ? "card-clicked" : ''}>
+        <li key={id} className={isDone ? "card-clicked" : ''}>
             <button onClick={handleClickBtn} onDoubleClick={handleDoubleClickBtn}
                     className='btn_product'
             >
 
-                <Checkbox checked={isClicked} onChange={handleClickBtn}/>
-                {isRedactTitleOpen
+                <Checkbox checked={isDone} onChange={handleClickBtn}/>
+                {isEditMode
                     ? <input ref={inputRef}
                              type="text"
                              onBlur={handleBlurInput}
                              value={productName}
                              onInput={handleInput}/>
 
-                    : <span style={{textDecoration: isClicked ? 'line-through' : 'none'}}>{productName}</span>
+                    : <span style={{textDecoration: isDone ? 'line-through' : 'none'}}>{productName}</span>
                 }
 
             </button>

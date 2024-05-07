@@ -8,8 +8,9 @@ import addProductToLS from "./helpers/addProductToLS.js";
 function App() {
     const [list, setList] = useState(getList())
 
-    const handleFromList = (id = null, value = null) => {
-        const newList = addProductToLS(id, value)
+    const handleFromList = (id = null, value = null, done = null) => {
+        console.log(done)
+        const newList = addProductToLS(id, value, done)
         console.log(newList)
         setList(newList);
     }
@@ -17,7 +18,7 @@ function App() {
     return <div className='container'>
         <h1 style={{color: 'black'}}>Shopping list</h1>
 
-        <CardList list={list} changeFromList={handleFromList}/>
+        <CardList list={list} handleFromList={handleFromList}/>
         <AddItemForm addItemToList={handleFromList}/>
     </div>
 }
