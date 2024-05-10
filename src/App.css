@@ -18,11 +18,11 @@
     margin-bottom: 10px;
 }
 
-.list li input{
+.list li input {
     margin-right: 10px;
 }
 
-.add_btn{
+.add_btn {
     width: 100%;
     background-color: #2a69f0;
     color: white;
@@ -35,10 +35,11 @@
     border-radius: 15px;
 }
 
-.card-clicked{
+.card-clicked {
     filter: brightness(0.9); /* Затемнение элемента */
 }
-.btn_product{
+
+.btn_product {
     border: none; /* Убираем границу кнопки */
     background-color: transparent; /* Убираем фоновый цвет кнопки */
     font: inherit; /* Наследуем шрифт от родительского элемента */
@@ -47,9 +48,6 @@
     align-items: center;
     width: 100%;
     border-radius: 15px;
-    padding:10px;
+    padding: 10px;
 }
 
-.btn_product:focus{
-    outline: none;
-}

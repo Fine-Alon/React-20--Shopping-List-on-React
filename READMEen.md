@@ -39,15 +39,14 @@ This application is built using React and provides a simple interface for managi
 
 ## Usage
 
-After running the application, you will see the interface for managing the shopping list. You can:
+After launching the application, you will see an interface for managing the shopping list. You can:
 
-1. **Edit Products**: Double-click on a product to open a field for editing its name. If you erase the text, the focus will leave the field, and the item will be removed from the list.
+1. **Edit products**: To open the product name editing field, double-click on its name. You can also press the spacebar to start editing. To save changes, press the Tab key or simply move the focus away from the field. If you delete all the text, the list item will be automatically removed.
 
-2. **Delete Products**: Click on the "Delete" button next to a product to remove it from the shopping list.
+2. **Delete products**: Simply delete the entire product name and move the focus away from the field. This will delete the product from the shopping list.
 
-3. **Mark Products as Completed**: Click on the checkbox next to a product to mark it as completed. Clicking again will unmark it.
+3. **Mark products as completed**: To mark a product as completed, press Enter on the selected product. Pressing Enter again will remove the completion mark. You can also click anywhere on the product card to toggle completion.
 
-4. **Add New Products**: Use the form at the bottom of the list to add a new product. Simply enter the product name and click "Add".
+4. **Add new products**: Use the form at the bottom of the list to add a new product. Simply enter the product name and press Enter to add it to the list.
 
-## License
 

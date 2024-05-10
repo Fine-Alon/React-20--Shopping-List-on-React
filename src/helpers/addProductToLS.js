@@ -3,7 +3,6 @@ const addProductToLS = (itemID = null, itemValue = null, itemDone = false) => {
     let newList = JSON.parse(localStorage.getItem('productList')) || []
 
     if (itemID !== null && itemValue !== null) {
-        console.log(itemDone)
         newList = newList.map(item => ({
             ...item,
             title: item.id === itemID ? itemValue : item.title,
